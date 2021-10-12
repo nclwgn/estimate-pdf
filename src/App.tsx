@@ -1,13 +1,13 @@
 import React from 'react';
 
 import 'antd/dist/antd.css';
-import Login from './pages/Login';
 import ContentContainer from './containers/ContentContainer';
+import Router from './pages/Router';
 
 function App() {
   return (
     <ContentContainer style={{height: '100vh'}}>
-      <Login />
+      <Router />
     </ContentContainer>
   );
 }
