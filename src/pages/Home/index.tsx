@@ -1,8 +1,12 @@
-import { Button, Space } from "antd";
+import { Button } from "antd";
+import { useHistory } from "react-router";
+import DefaultVerticalSpace from "../../containers/DefaultVerticalSpace";
 
 const Home = () => {
+  const history = useHistory();
+  
   return (
-    <Space direction='vertical' style={{width: '100%'}} size='large'>
+    <DefaultVerticalSpace>
       <Button
         type='primary'
         size='large'
@@ -14,6 +18,7 @@ const Home = () => {
         type='primary'
         size='large'
         block
+        onClick={() => history.push('/estimate')}
       >
         Novo orçamento
       </Button>
@@ -24,7 +29,7 @@ const Home = () => {
       >
         Solicitar acesso ao sistema
       </Button>
-    </Space>
+    </DefaultVerticalSpace>
   )
 };
 

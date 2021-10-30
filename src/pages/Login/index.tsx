@@ -3,6 +3,7 @@ import { KeyOutlined, UserOutlined } from '@ant-design/icons';
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { useHistory } from "react-router-dom";
+import DefaultVerticalSpace from "../../containers/DefaultVerticalSpace";
 
 const Login = () => {
   const [credential, setCredential] = useState({username: '', password: ''});
@@ -20,7 +21,7 @@ const Login = () => {
   }
 
   return (
-    <Space direction='vertical' style={{width: '100%'}} size='large'>
+    <DefaultVerticalSpace>
       <Input
         size='large'
         placeholder='Usuário'
@@ -44,7 +45,7 @@ const Login = () => {
       >
         {isLoading ? 'Autenticando...' : 'Acessar'}
       </Button>
-    </Space>
+    </DefaultVerticalSpace>
   )
 };
 
