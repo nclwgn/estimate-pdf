@@ -1,42 +1,49 @@
-import { PlusOutlined } from "@ant-design/icons";
-import { Button, Collapse, Divider } from "antd";
+import { CloseSquareFilled, CloseSquareOutlined, PlusOutlined } from "@ant-design/icons";
+import { Button, Collapse, Divider, Space } from "antd";
+import useList from "../../../../hooks/useList";
 import EstimateSubItem from "../../../../models/EstimateSubItem";
 import SubItem from "../SubItem";
+import DeleteIcon from "./components/DeleteIcon";
 import { ItemProps } from "./types";
 
 const Item = ({
   item,
   onChange,
+  onDelete,
+  key,
   ...rest
 }: ItemProps) => {
-  const onChangeSubItem = (index: number, subItem: EstimateSubItem) => {
-    // Removes specified element from array
-    const newSubItems = item.subItems.filter((_, i) => i !== index);
-
-    // Inserts modified element into the same array index
-    newSubItems.splice(index, 0, subItem);
-
-    onChange({...item, subItems: newSubItems});
-  }
-
-  const onAdd = () => {
-    onChange({...item, subItems: [...item.subItems, new EstimateSubItem()]})
-  }
+  const {
+    add: addSubItem,
+    change: changeSubItem,
+    remove: removeSubItem
+  } = useList<EstimateSubItem>(item.subItems);
 
   return (
-    <Collapse.Panel {...rest} header={rest.header ?? item.title}>
+    <Collapse.Panel
+      {...rest}
+      key={key}
+      header={rest.header ?? item.title}
+      extra={<DeleteIcon key={key} onDelete={onDelete}/>}
+    >
       {item.subItems.map((subItem, index) => (
         <>
-          { item.subItems.length >= 2 && <Divider orientation='left'><small>Opção {index + 1}</small></Divider> }
+          { item.subItems.length >= 2 &&
+          <Divider orientation='left'>
+            <Space>
+              <small>Opção {index + 1}</small>
+              <small><DeleteIcon key={index} onDelete={() => onChange({...item, subItems: removeSubItem(index)})} /></small>
+            </Space>
+          </Divider> }
           <SubItem
             item={subItem}
-            onChange={subItem => onChangeSubItem(index, subItem)}
+            onChange={subItem => onChange({...item, subItems: changeSubItem(index, subItem)})}
           />
         </>
       ))}
 
       <Divider orientation='left' />
-      <Button size='small' onClick={() => onAdd()}>
+      <Button size='small' onClick={() => onChange({...item, subItems: addSubItem(new EstimateSubItem())})}>
         <PlusOutlined /> Nova opção
       </Button>
     </Collapse.Panel>

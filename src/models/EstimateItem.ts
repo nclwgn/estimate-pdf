@@ -4,5 +4,7 @@ export default class EstimateItem {
   public title: string = '';
   public subItems: EstimateSubItem[] = [ new EstimateSubItem() ];
 
-  constructor() {}
+  constructor(title: string) {
+    this.title = title;
+  }
 }
