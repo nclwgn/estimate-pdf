@@ -1,5 +1,5 @@
-import { PlusOutlined } from "@ant-design/icons";
-import { Button, Collapse, Form, Input } from "antd";
+import { PlusOutlined, TableOutlined } from "@ant-design/icons";
+import { Button, Collapse, Form, Input, Space } from "antd";
 import { useState } from "react";
 import DefaultVerticalSpace from "../../containers/DefaultVerticalSpace";
 import Item from "./components/Item";
@@ -9,7 +9,10 @@ import NewItemModal from "./components/NewItemModal";
 import useList from "../../hooks/useList";
 
 const Estimate = () => {
-  const [estimate, setEstimate] = useState<EstimateModel>(new EstimateModel());
+  const [estimate, setEstimate] = useState<EstimateModel>({
+    clientName: '',
+    items: []
+  });
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   const {
@@ -19,7 +22,10 @@ const Estimate = () => {
   } = useList<EstimateItem>(estimate.items);
 
   const onAdd = (newItemName: string) => {
-    setEstimate({...estimate, items: addItem(new EstimateItem(newItemName))});
+    setEstimate({...estimate, items: addItem({
+      title: newItemName,
+      subItems: [ {description: ''} ]
+    })});
     setIsModalVisible(false);
   }
   
@@ -49,9 +55,14 @@ const Estimate = () => {
           ))}
         </Collapse>
 
-        <Button type='primary' onClick={() => setIsModalVisible(true)}>
-          <PlusOutlined /> Novo ambiente
-        </Button>
+        <Space direction='horizontal'>
+          <Button type='primary' onClick={() => setIsModalVisible(true)}>
+            <PlusOutlined /> Novo ambiente
+          </Button>
+          <Button type='primary'>
+            <TableOutlined /> Gerar orçamento
+          </Button>
+        </Space>
       </DefaultVerticalSpace>
       <NewItemModal
         visible={isModalVisible}

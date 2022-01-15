@@ -6,7 +6,7 @@ const ContentContainer = ({ children, ...rest }: React.PropsWithChildren<React.D
   return (
     <div {...rest}>
       <Row align='middle'>
-        <Col sm={{offset: 0, span: 24}} lg={{offset: 8, span: 8}}>
+        <Col xs={{offset: 0, span: 24}} lg={{offset: 8, span: 8}}>
           {children}
         </Col>
       </Row>

@@ -1,8 +1,6 @@
 import EstimateItem from "./EstimateItem";
 
-export default class Estimate {
-  public clientName: string = '';
-  public items: EstimateItem[] = [];
-
-  constructor() {}
+export default interface Estimate {
+  clientName: string;
+  items: EstimateItem[];
 }

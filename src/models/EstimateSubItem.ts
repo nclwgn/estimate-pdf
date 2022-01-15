@@ -1,6 +1,4 @@
-export default class EstimateSubItem {
-  public description: string = '';
-  public value?: number;
-
-  constructor() {}
+export default interface EstimateSubItem {
+  description: string;
+  value?: number;
 }

@@ -43,7 +43,7 @@ const Item = ({
       ))}
 
       <Divider orientation='left' />
-      <Button size='small' onClick={() => onChange({...item, subItems: addSubItem(new EstimateSubItem())})}>
+      <Button size='small' onClick={() => onChange({...item, subItems: addSubItem({description: ''})})}>
         <PlusOutlined /> Nova opção
       </Button>
     </Collapse.Panel>
