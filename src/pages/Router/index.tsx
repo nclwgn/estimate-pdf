@@ -1,28 +1,35 @@
-import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, RouteProps, Switch } from 'react-router-dom';
 import Home from '../Home';
 import Login from '../Login';
 import Estimate from '../Estimate';
 import Preview from '../Preview';
 import useAuth from '../../hooks/useAuth';
 
-const Router = () => {
+const PrivateRoute = (props: RouteProps) => {
   const { user } = useAuth();
 
+  if (!user) {
+    return <Redirect to='/login' />
+  }
+
+  return (
+    <Route {...props} />
+  )
+}
+
+const Router = () => {
   return (
     <BrowserRouter>
       <Switch>
-        {user &&
-        <>
-          <Route path='/home'>
-            <Home />
-          </Route>
-          <Route path='/estimate'>
-            <Estimate />
-          </Route>
-          <Route path='/preview'>
-            <Preview />
-          </Route>
-        </>}
+        <PrivateRoute path='/home'>
+          <Home />
+        </PrivateRoute>
+        <PrivateRoute path='/estimate'>
+          <Estimate />
+        </PrivateRoute>
+        <PrivateRoute path='/preview'>
+          <Preview />
+        </PrivateRoute>
 
         <Route path='/login'>
           <Login />

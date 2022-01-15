@@ -22,14 +22,13 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
-        const { displayName, uid } = user;
-
-        if (!displayName || !uid)
+        const { uid } = user;
+        
+        if (!uid)
           throw new Error('The provided user is missing informations');
           
         setUser({
-          id: uid,
-          name: displayName
+          id: uid
         });
       }
     });
@@ -44,14 +43,13 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     try {
       let login = await signInWithEmailAndPassword(auth, email, password);
 
-      const { displayName, uid } = login.user;
+      const { uid } = login.user;
 
-      if (!displayName || !uid)
+      if (!uid)
         throw new Error('The provided user is missing informations');
       
       setUser({
-        id: uid,
-        name: displayName
+        id: uid
       });
     }
     catch (e) {

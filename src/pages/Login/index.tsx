@@ -1,6 +1,6 @@
 import { Alert, Button, Input, Space } from "antd";
 import { KeyOutlined, UserOutlined } from '@ant-design/icons';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { useHistory } from "react-router-dom";
 import DefaultVerticalSpace from "../../containers/DefaultVerticalSpace";
@@ -21,7 +21,7 @@ const Login = () => {
       history.push('/home');
     }
     catch (e: any) {
-      setErrorMessage(e.toString());
+      setErrorMessage(`Não foi possível realizar o login na aplicação: ${e.message}`);
     }
     finally {
       setIsLoading(false);
