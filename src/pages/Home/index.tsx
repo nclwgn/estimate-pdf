@@ -7,6 +7,7 @@ const Home = () => {
   
   return (
     <DefaultVerticalSpace>
+      <img src='./assets/images/Logo.png' width='100%'/>
       <Button
         type='primary'
         size='large'
