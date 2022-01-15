@@ -30,6 +30,7 @@ const Login = () => {
 
   return (
     <DefaultVerticalSpace>
+      <img src='./assets/images/Logo.png' width='100%'/>
       { errorMessage && <Alert message={errorMessage} type='error' showIcon /> }
       <Input
         size='large'
