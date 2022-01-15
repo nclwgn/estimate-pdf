@@ -11,23 +11,25 @@ const Home = () => {
         type='primary'
         size='large'
         block
-      >
-        Solicitações de acesso
+        disabled
+        >
+        Solicitações de acesso (em breve)
       </Button>
       <Button
         type='primary'
         size='large'
         block
         onClick={() => history.push('/estimate')}
-      >
+        >
         Novo orçamento
       </Button>
       <Button
+        disabled
         type='primary'
         size='large'
         block
       >
-        Solicitar acesso ao sistema
+        Solicitar acesso ao sistema (em breve)
       </Button>
     </DefaultVerticalSpace>
   )
