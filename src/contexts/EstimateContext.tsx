@@ -15,7 +15,10 @@ interface EstimateContextProviderProps {
 const EstimateContextProvider = (props: EstimateContextProviderProps) => {
   const [ estimate, setEstimate ] = useState<Estimate>({
     clientName: '',
-    items: []
+    items: [],
+    hasDiscount: false,
+    discountPercentage: 5,
+    extraInformation: ''
   });
 
   return (

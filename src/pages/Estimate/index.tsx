@@ -8,6 +8,7 @@ import useList from "../../hooks/useList";
 import { EstimateItem } from "../../models/EstimateItem";
 import { useEstimate } from "../../hooks/useEstimate";
 import { useHistory } from "react-router-dom";
+import Checkbox from "antd/lib/checkbox/Checkbox";
 
 const Estimate = () => {
   const history = useHistory();
@@ -59,6 +60,33 @@ const Estimate = () => {
             />
           ))}
         </Collapse>
+
+        <Form size='middle' layout='inline'>
+          <Form.Item>
+            <Checkbox checked={estimate.hasDiscount} onChange={e => setEstimate({...estimate, hasDiscount: e.target.checked})}>
+              Desconto à vista
+            </Checkbox>
+          </Form.Item>
+          <Form.Item label='%'>
+            <Input
+              type='number'
+              value={estimate.discountPercentage}
+              onChange={e => setEstimate({...estimate, discountPercentage: parseFloat(e.target.value)})}
+              disabled={!estimate.hasDiscount}
+            />
+          </Form.Item>
+        </Form>
+
+        <Form layout='vertical' size='small'>
+          <Form.Item label='Observações finais'>
+            <Input.TextArea
+              placeholder='Insira observações finais necessárias'
+              rows={4}
+              value={estimate.extraInformation}
+              onChange={(e) => setEstimate({...estimate, extraInformation: e.target.value})}
+            />
+          </Form.Item>
+        </Form>
 
         <Space direction='horizontal'>
           <Button type='primary' onClick={() => setIsModalVisible(true)}>
