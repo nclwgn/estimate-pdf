@@ -1,4 +1,4 @@
-import EstimateSubItem from "../../../../models/EstimateSubItem";
+import { EstimateSubItem } from "../../../../models/EstimateSubItem";
 
 interface SubItemProps {
   item: EstimateSubItem;

@@ -1,4 +1,4 @@
-export default interface EstimateSubItem {
+export interface EstimateSubItem {
   description: string;
   value?: number;
 }

@@ -2,6 +2,7 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import Home from '../Home';
 import Login from '../Login';
 import Estimate from '../Estimate';
+import Preview from '../Preview';
 
 const Router = () => {
   return (
@@ -15,6 +16,9 @@ const Router = () => {
         </Route>
         <Route path='/estimate'>
           <Estimate />
+        </Route>
+        <Route path='/preview'>
+          <Preview />
         </Route>
         <Route path='*'>
           <Redirect to='/login' />

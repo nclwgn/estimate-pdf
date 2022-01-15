@@ -1,7 +1,7 @@
-import { CloseSquareFilled, CloseSquareOutlined, PlusOutlined } from "@ant-design/icons";
+import { PlusOutlined } from "@ant-design/icons";
 import { Button, Collapse, Divider, Space } from "antd";
 import useList from "../../../../hooks/useList";
-import EstimateSubItem from "../../../../models/EstimateSubItem";
+import { EstimateSubItem } from "../../../../models/EstimateSubItem";
 import SubItem from "../SubItem";
 import DeleteIcon from "./components/DeleteIcon";
 import { ItemProps } from "./types";

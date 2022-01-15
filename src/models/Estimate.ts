@@ -1,6 +1,6 @@
-import EstimateItem from "./EstimateItem";
+import { EstimateItem } from "./EstimateItem";
 
-export default interface Estimate {
+export interface Estimate {
   clientName: string;
   items: EstimateItem[];
 }

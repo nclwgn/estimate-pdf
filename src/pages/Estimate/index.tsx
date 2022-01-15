@@ -3,16 +3,17 @@ import { Button, Collapse, Form, Input, Space } from "antd";
 import { useState } from "react";
 import DefaultVerticalSpace from "../../containers/DefaultVerticalSpace";
 import Item from "./components/Item";
-import EstimateModel from "../../models/Estimate";
-import EstimateItem from "../../models/EstimateItem";
 import NewItemModal from "./components/NewItemModal";
 import useList from "../../hooks/useList";
+import { EstimateItem } from "../../models/EstimateItem";
+import { useEstimate } from "../../hooks/useEstimate";
+import { useHistory } from "react-router-dom";
 
 const Estimate = () => {
-  const [estimate, setEstimate] = useState<EstimateModel>({
-    clientName: '',
-    items: []
-  });
+  const history = useHistory();
+
+  const { estimate, setEstimate } = useEstimate();
+
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   const {
@@ -27,6 +28,10 @@ const Estimate = () => {
       subItems: [ {description: ''} ]
     })});
     setIsModalVisible(false);
+  }
+
+  const onGenerate = () => {
+    history.push('/preview');
   }
   
   return (
@@ -59,7 +64,7 @@ const Estimate = () => {
           <Button type='primary' onClick={() => setIsModalVisible(true)}>
             <PlusOutlined /> Novo ambiente
           </Button>
-          <Button type='primary'>
+          <Button type='primary' onClick={onGenerate}>
             <TableOutlined /> Gerar orçamento
           </Button>
         </Space>

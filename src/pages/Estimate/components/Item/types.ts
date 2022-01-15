@@ -1,5 +1,5 @@
 import { CollapsePanelProps } from "antd";
-import EstimateItem from "../../../../models/EstimateItem";
+import { EstimateItem } from "../../../../models/EstimateItem";
 
 interface ItemProps extends Partial<CollapsePanelProps> {
   item: EstimateItem;

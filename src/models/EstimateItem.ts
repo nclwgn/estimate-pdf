@@ -1,6 +1,6 @@
-import EstimateSubItem from "./EstimateSubItem";
+import { EstimateSubItem } from "./EstimateSubItem";
 
-export default interface EstimateItem {
+export interface EstimateItem {
   title: string;
   subItems: EstimateSubItem[];
 }
