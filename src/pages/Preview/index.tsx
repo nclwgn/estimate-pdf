@@ -1,6 +1,6 @@
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { PDFViewer } from "@react-pdf/renderer";
-import { Button, Space } from "antd";
+import { Button } from "antd";
 import { useHistory } from "react-router-dom";
 import DefaultVerticalSpace from "../../containers/DefaultVerticalSpace";
 import { Estimate } from "../../documents/Estimate";

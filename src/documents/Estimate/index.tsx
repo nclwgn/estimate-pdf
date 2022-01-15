@@ -43,7 +43,7 @@ const Estimate = ({ estimate } : EstimateProps) => {
           {estimate.items.map((item, index) => (
             <Item item={item} key={index} />
           ))}
-          {estimate.items.every(item => item.subItems.length == 1) &&
+          {estimate.items.every(item => item.subItems.length === 1) &&
             <>
               <Total description='Valor Total' value={getTotalValue()} />
               {estimate.hasDiscount &&

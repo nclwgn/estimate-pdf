@@ -1,6 +1,6 @@
-import { Alert, Button, Input, Space } from "antd";
+import { Alert, Button, Input } from "antd";
 import { KeyOutlined, UserOutlined } from '@ant-design/icons';
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
 import { useHistory } from "react-router-dom";
 import DefaultVerticalSpace from "../../containers/DefaultVerticalSpace";
