@@ -1,13 +1,10 @@
-type LoginFunction = (username: string, password: string) => Promise<void>;
+import { useContext } from "react";
+import { AuthContext } from "../contexts/AuthContext";
 
-const useAuth = (): {login: LoginFunction} => {
-  const login = (username: string, password: string): Promise<void> => {
-    return new Promise(r => setTimeout(r, 2500));
-  }
+const useAuth = () => {
+  const value = useContext(AuthContext);
 
-  return {
-    login
-  }
+  return value;
 };
 
 export default useAuth;
