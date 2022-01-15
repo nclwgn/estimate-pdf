@@ -1,4 +1,4 @@
-!(Estimate PDF)[https://github.com/nclwgn/estimate-pdf/blob/develop/public/assets/images/Logo.png?raw=true]
+![Estimate PDF](https://github.com/nclwgn/estimate-pdf/blob/develop/public/assets/images/Logo.png)
 
 Estimate pdf allows small businesses to quickly generate a PDF with their product costs for many customers.
 
@@ -6,7 +6,7 @@ The current version of the projects works for a single organization, but it aims
 
 # How to test
 
-(This project is hosted)[https://estimate-pdf.web.app/home] under Firebase's Spark plan, and any user who wants to test can access it using these custom credentials:
+[This project is hosted](https://estimate-pdf.web.app/home) under Firebase's Spark plan, and any user who wants to test can access it using these custom credentials:
 
 User: github-example@estimatepdf.com.br
 Password: github
