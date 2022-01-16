@@ -8,11 +8,17 @@ The current version of the projects works for a single organization, but it aims
 
 [This project is hosted](https://estimate-pdf.web.app/home) under Firebase's Spark plan, and any user who wants to test can access it using these custom credentials:
 
-User: github-example@estimatepdf.com.br
-Password: github
+- **User**: github-example@estimatepdf.com.br
+- **Password**: github
 
 
 You may note that the generated estimates will be issued under a single organization, which is currently not customizable.
+
+# Screenshots
+
+<img src="https://i.imgur.com/mVLEft7.png" width="25%">  <img src="https://i.imgur.com/6nn2PBi.png" width="25%">
+<img src="https://i.imgur.com/cVz8BnU.png" width="25%">
+<img src="https://i.imgur.com/gz0kK5i.png" width="25%">
 
 # Roadmap
 
