@@ -2,12 +2,13 @@ import { createContext, ReactNode, useEffect, useState,  } from "react";
 import { User } from "../models/User";
 import { auth } from "../services/firebase";
 
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, signOut as firebaseSignOut } from "firebase/auth";
 
 
 interface AuthContextType {
   user?: User;
   signIn: (email: string, password: string) => Promise<void>;
+  signOut: () => Promise<void>;
 }
 
 export const AuthContext = createContext({} as AuthContextType);
@@ -22,13 +23,14 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
-        const { uid } = user;
+        const { uid, email } = user;
         
-        if (!uid)
+        if (!uid || !email)
           throw new Error('The provided user is missing informations');
           
         setUser({
-          id: uid
+          id: uid,
+          email
         });
       }
     });
@@ -41,16 +43,7 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
 
   const signIn = async (email: string, password: string) => {
     try {
-      let login = await signInWithEmailAndPassword(auth, email, password);
-
-      const { uid } = login.user;
-
-      if (!uid)
-        throw new Error('The provided user is missing informations');
-      
-      setUser({
-        id: uid
-      });
+      await signInWithEmailAndPassword(auth, email, password);
     }
     catch (e) {
       // Let the parent caller handle the exceptions
@@ -59,8 +52,20 @@ export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
     }
   }
 
+  const signOut = async () => {
+    try {
+      await firebaseSignOut(auth);
+
+      setUser(undefined);
+    }
+    catch (e) {
+      console.log(e);
+      throw e;
+    }
+  }
+
   return (
-    <AuthContext.Provider value={{ user, signIn }}>
+    <AuthContext.Provider value={{ user, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   )
