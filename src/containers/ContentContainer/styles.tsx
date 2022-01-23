@@ -1,8 +1,11 @@
-import { Row as AntdRow } from "antd";
 import styled from "styled-components";
 
-const Row = styled(AntdRow)`
-  height: 100%;
+const Container = styled.div`
+  background: #fff;
+  width: 100%;
+  max-width: 720px;
+  padding: 1rem;
+  margin: 1rem auto 1rem auto;
 `;
 
-export default Row;
+export { Container };

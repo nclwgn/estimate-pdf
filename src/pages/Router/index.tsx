@@ -1,4 +1,4 @@
-import { BrowserRouter, Redirect, Route, RouteProps, Switch } from 'react-router-dom';
+import { Redirect, Route, RouteProps, Switch } from 'react-router-dom';
 import Home from '../Home';
 import Login from '../Login';
 import Estimate from '../Estimate';
@@ -19,26 +19,24 @@ const PrivateRoute = (props: RouteProps) => {
 
 const Router = () => {
   return (
-    <BrowserRouter>
-      <Switch>
-        <PrivateRoute path='/home'>
-          <Home />
-        </PrivateRoute>
-        <PrivateRoute path='/estimate'>
-          <Estimate />
-        </PrivateRoute>
-        <PrivateRoute path='/preview'>
-          <Preview />
-        </PrivateRoute>
+    <Switch>
+      <PrivateRoute path='/home'>
+        <Home />
+      </PrivateRoute>
+      <PrivateRoute path='/estimate'>
+        <Estimate />
+      </PrivateRoute>
+      <PrivateRoute path='/preview'>
+        <Preview />
+      </PrivateRoute>
 
-        <Route path='/login'>
-          <Login />
-        </Route>
-        <Route path='*'>
-          <Redirect to='/login' />
-        </Route>
-      </Switch>
-    </BrowserRouter>
+      <Route path='/login'>
+        <Login />
+      </Route>
+      <Route path='*'>
+        <Redirect to='/login' />
+      </Route>
+    </Switch>
   )
 }
 
