@@ -8,7 +8,13 @@ import { useEstimate } from "../../hooks/useEstimate";
 
 const Preview = () => {
   const history = useHistory();
-  const { estimate } = useEstimate();
+  const { estimate, cleanEstimate } = useEstimate();
+
+  const onFinishClick = () => {
+    cleanEstimate();
+
+    history.push('/home');
+  }
 
   return (
     <>
@@ -27,6 +33,15 @@ const Preview = () => {
             <Estimate estimate={estimate} />
           </PDFViewer>
         </div>
+
+        <Button
+          type='dashed'
+          size='small'
+          block
+          onClick={onFinishClick}
+        >
+          Encerrar e voltar ao início
+        </Button>
       </DefaultVerticalSpace>
     </>
   );

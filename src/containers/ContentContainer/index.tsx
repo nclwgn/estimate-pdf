@@ -6,7 +6,7 @@ import { Container } from "./styles";
 const ContentContainer = ({ children, ...rest }: React.PropsWithChildren<React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>>) => {
   return (
     <div {...rest}>
-    <Layout style={{ height: '100%' }}>
+    <Layout style={{ minHeight: '100%' }}>
       <Header>
         <UserBadge />
       </Header>
