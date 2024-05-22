@@ -14,6 +14,7 @@ interface EstimateContextProviderProps {
 }
 
 const defaultEstimate: Estimate = {
+  companyName: 'Atelier Vânia Wagner',
   clientName: '',
   items: [],
   hasDiscount: false,

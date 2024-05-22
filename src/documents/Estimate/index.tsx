@@ -38,7 +38,10 @@ const Estimate = ({ estimate } : EstimateProps) => {
   return (
     <Document>
       <Page size='A4' style={styles.page}>
-        <Header clientName={estimate.clientName} />
+        <Header
+          clientName={estimate.clientName}
+          companyName={estimate.companyName}
+        />
         <View style={styles.content}>
           {estimate.items.map((item, index) => (
             <Item item={item} key={index} />

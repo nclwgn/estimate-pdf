@@ -38,13 +38,20 @@ const styles = StyleSheet.create({
   }
 })
 
-const Header = ({ clientName }: HeaderProps) => {
+const Header = ({ clientName, companyName }: HeaderProps) => {
   const getCompany = (): Company => {
     return {
-      name: 'Atelier Vânia H. Wagner',
-      address: 'Rua Dorval Luz, 183\nBairro Santa Terezinha\nBrusque/SC',
-      logo: 'https://i.imgur.com/zoGjCWp.png'
-    };
+      "Atelier Vânia Wagner": {
+        name: 'Atelier Vânia H. Wagner',
+        address: 'Rua Dorval Luz, 183\nBairro Santa Terezinha\nBrusque/SC',
+        logo: 'https://i.imgur.com/zoGjCWp.png'
+      },
+      "Atear Persianas": {
+        name: 'Atear Persianas',
+        address: 'Rua Dorval Luz, 183\nBairro Santa Terezinha\nBrusque/SC',
+        logo: 'https://i.imgur.com/lNCOvyl.png'
+      }
+    }[companyName];
   }
 
   return (

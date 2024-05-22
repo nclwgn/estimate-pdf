@@ -1,5 +1,5 @@
 import { PlusOutlined, TableOutlined } from "@ant-design/icons";
-import { Button, Collapse, Form, Input, Space } from "antd";
+import { Button, Collapse, Form, Input, Select, Space } from "antd";
 import { useState } from "react";
 import DefaultVerticalSpace from "../../containers/DefaultVerticalSpace";
 import Item from "./components/Item";
@@ -41,6 +41,16 @@ const Estimate = () => {
         <h1>Novo orçamento</h1>
 
         <Form size='middle' layout='vertical'>
+          <Form.Item label='Empresa'>
+            <Select
+              value={estimate.companyName}
+              onChange={(e) => setEstimate({...estimate, companyName: e})}
+            >
+              <Select.Option value="Atelier Vânia Wagner">Atelier Vânia Wagner</Select.Option>
+              <Select.Option value="Atear Persianas">Atear Persianas</Select.Option>
+            </Select>
+          </Form.Item>
+
           <Form.Item label='Cliente'>
             <Input
               placeholder='Insira o nome do cliente'
